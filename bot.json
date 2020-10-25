@@ -1,0 +1,30 @@
+{
+  "id": "d34ff1e6-12fd-4cb5-83c1-aab052e1a73a",
+  "name": "Elizo",
+  "description": null,
+  "default_flow": "Default",
+  "flows": [
+    {
+      "name": "Default",
+      "description": "Default custom flow",
+      "commands": []
+    }
+  ],
+  "files": [],
+  "functions": [
+    {
+      "name": "Eliza",
+      "description": null,
+      "args": [
+        "query="
+      ],
+      "import_url": null,
+      "runtime": "nodejs12.x",
+      "handler": "index.handler",
+      "environment": {},
+      "app_id": null,
+      "version": null
+    }
+  ],
+  "apps": []
+}

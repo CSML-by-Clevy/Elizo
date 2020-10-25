@@ -1,0 +1,48 @@
+start:
+  say "Hello, I'm your Elizo"
+  say Typing(3000)
+  say "I'm here to make you feel good 🤗"
+  say Typing(3000)
+  goto menu
+  
+menu:
+  say Question("What would you like to do?",
+    button_type="quick_reply",
+    buttons=[
+      Button("I want to meditate") as btn_med,
+      Button("I need some motivation!") as btn_mot,
+      Button("Let's talk") as btn_talk
+    ])
+  hold
+  if (event match btn_med) {
+    goto meditation
+  } else if (event match btn_mot) {
+    goto motivation
+  } else {
+    say "Tell me what's on your mind ☺️"
+    goto talk
+  }
+
+meditation:
+  say "Here is video to help you with your meditation, enjoy 😌"
+  say Video("https://www.youtube.com/watch?v=inpok4MKVLM")
+  say Typing(20000)
+  goto menu
+
+motivation:
+  do quotes = HTTP("https://type.fit/api/quotes").get().send()
+  do shuffledQuotes = Shuffle(quotes)
+  say Typing(3000)
+  say "“{{shuffledQuotes[0].text}}”\n\n_{{shuffledQuotes[0].author}}_"
+  say Typing(8000)
+  goto menu
+
+talk:
+  hold
+  do response = Fn("Eliza", query=event)
+  say Typing(5000)
+  say "{{response.message}}"
+  if (response.end == true) {
+    goto menu
+  }
+  goto talk
