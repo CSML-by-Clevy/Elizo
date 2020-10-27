@@ -7,3 +7,5 @@
 
 
 Enjoy Elizo :3
+
+For reference, here is the blog post that explains how this chatbot was built: https://blog.csml.dev/use-the-actual-eliza-algorithm-in-your-chatbot/
